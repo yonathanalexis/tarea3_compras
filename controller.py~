@@ -11,7 +11,7 @@ def connect():
 def get_productos():
     con = connect()
     c = con.cursor()
-    query = """SELECT codigo,nombre,descripcion,marca,color FROM productos"""
+    query = """SELECT id_producto,codigo,nombre,descripcion,marca,color FROM productos"""
     result = c.execute(query)
     prod = result.fetchall()
     con.close()
@@ -21,11 +21,9 @@ def editar_producto(codigo,nombre,descripcion,marca,color):
     exito = False
     con = connect()
     c = con.cursor()
-    query1= """SELECT id_producto FROM productos WHERE codigo=?"""
-    id_producto=resultado = c.execute(query,[codigo])	
     query = "UPDATE productos SET codigo=?,nombre=?,descripcion=?,marca=?,color=? WHERE id_producto=?"
     try:
-        resultado = c.execute(query,[codigo,nombre,descripcion,marca,color,id_producto])
+        resultado = c.execute(query,[id_producto,codigo,nombre,descripcion,marca,color,codigo])
         con.commit()
         exito = True
     except sqlite3.Error as e:
