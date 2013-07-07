@@ -6,6 +6,7 @@ import sys
 from PySide import QtGui, QtCore
 import controller
 import editar
+import agragar
 from ui_compras import Ui_MainWindow
 
 
@@ -19,7 +20,23 @@ class Productos(QtGui.QMainWindow):
 		  self.set_listeners()
 		  self.show()
 	def set_listeners(self):
-		  self.ui.editar_btn.clicked.connect(self.editar_dato)	  
+		  self.ui.editar_btn.clicked.connect(self.editar_dato)
+		  self.ui.agregar_btn.clicked.connect(self.agregar_dato)
+		  self.ui.eliminar_btn.clicked.connect(self.eliminar_dato)
+		  self.ui.btn_buscar.clicked.connect(self.cargar_buscar)
+	def agregar_dato(self):
+		form=agregar.Form(self)
+		form.rejected.connect(self.dato_nuevo)
+		form.exec_()
+	def cargar_buscar(self):
+		dato = self.ui.line_buscar.text()
+		prod = controller.buscar_producto(dato)
+		self.cargar_productos(prod)
+
+	def eliminar_dato(self):
+        	
+            		
+                	return False			  
 	def editar_dato(self):
 		model = self.ui.tabla.model()
         	index = self.ui.tabla.currentIndex()

@@ -22,7 +22,8 @@ def editar_producto(codigo,nombre,descripcion,marca,color):
     con = connect()
     c = con.cursor()
     query1= """SELECT id_producto FROM productos WHERE codigo=?"""
-    id_producto=resultado = c.execute(query,[codigo])	
+    resultado = c.execute(query1,[codigo])
+    id_producto=resultado.fetchone()	
     query = "UPDATE productos SET codigo=?,nombre=?,descripcion=?,marca=?,color=? WHERE id_producto=?"
     try:
         resultado = c.execute(query,[codigo,nombre,descripcion,marca,color,id_producto])
@@ -54,7 +55,7 @@ def agregar_producto(codigo,nombre,descripcion,marca,color):
     exito = False
     con = connect()
     c = con.cursor()
-    values = [codigo,nombre,descripcion, marca,color]
+    values = [codigo,nombre,descripcion,marca,color]
     query = "INSERT INTO productos (codigo,nombre,descripcion,marca,color) VALUES (?,?,?,?,?)"
     try:
         resultado1 = c.execute(query, values)
@@ -65,3 +66,14 @@ def agregar_producto(codigo,nombre,descripcion,marca,color):
         print "Error:", e.args[0]
     con.close()
     return exito
+def buscar_producto(word):
+    con = connect()
+    c = con.cursor()
+    query = """SELECT a.codigo, a.nombre, a.descripcion, a.marca,a.color
+            FROM productos a
+            WHERE (a.codigo LIKE '%'||?||'%' OR a.nombre LIKE '%'||?||'%' OR a. LIKE '%'||?||'%' )"""
+
+    result = c.execute(query, [word, word, word])
+    seleccion= result.fetchall()
+    con.close()
+    return seleccion

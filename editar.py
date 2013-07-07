@@ -40,4 +40,4 @@ class Form(QtGui.QDialog):
 			self.errorMessageDialog = QtGui.QErrorMessage(self)
 			self.errorMessageDialog.showMessage("el precio se ha ingresado erroneamente")
 	def cancel(self):
-		self.reject()
+				self.reject()
