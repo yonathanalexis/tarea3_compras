@@ -71,7 +71,7 @@ def buscar_producto(word):
     c = con.cursor()
     query = """SELECT a.codigo, a.nombre, a.descripcion, a.marca,a.color
             FROM productos a
-            WHERE (a.codigo LIKE '%'||?||'%' OR a.nombre LIKE '%'||?||'%' OR a. LIKE '%'||?||'%' )"""
+            WHERE (a.codigo LIKE '%'||?||'%' OR a.nombre LIKE '%'||?||'%' OR a.marca LIKE '%'||?||'%' )"""
 
     result = c.execute(query, [word, word, word])
     seleccion= result.fetchall()
