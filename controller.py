@@ -26,7 +26,7 @@ def editar_producto(codigo,nombre,descripcion,marca,color):
     id_producto=resultado.fetchone()	
     query = "UPDATE productos SET codigo=?,nombre=?,descripcion=?,marca=?,color=? WHERE id_producto=?"
     try:
-        resultado = c.execute(query,[codigo,nombre,descripcion,marca,color,id_producto])
+        resultado = c.execute(query,[codigo,nombre,descripcion,marca,color,id_producto[0]])
         con.commit()
         exito = True
     except sqlite3.Error as e:
@@ -39,7 +39,7 @@ def delete(dato):
     exito = False
     con = connect()
     c = con.cursor()
-    query = "DELETE FROM productos WHERE id_producto = ?"
+    query = "DELETE FROM productos WHERE codigo = ?"
     try:
         resultado = c.execute(query, [dato])
         con.commit()

@@ -40,9 +40,27 @@ class Productos(QtGui.QMainWindow):
 		self.cargar_productos(prod)
 
 	def eliminar_dato(self):
-        	
+        	model = self.ui.tabla.model()
+        	index = self.ui.tabla.currentIndex()
+        	if index.row() == -1: 
+            		self.errorMessageDialog = QtGui.QErrorMessage(self)
+            		self.errorMessageDialog.showMessage("Debe seleccionar una fila")
+            		return False
+        	else:
+            		codigo = model.index(index.row(),0, QtCore.QModelIndex()).data()
+            	if (controller.delete(codigo)):
+                	self.cargar_productos()
+                	msgBox = QtGui.QMessageBox()
+                	msgBox.setText("EL registro fue eliminado.")
+                	msgBox.exec_()
+                	return True
+            	else:
+                	self.ui.errorMessageDialog = QtGui.QErrorMessage(self)
+                	self.ui.errorMessageDialog.showMessage("Error al eliminar el registro")
+                	return False
             		
-                	return False			  
+                			  
+	
 	def editar_dato(self):
 		model = self.ui.tabla.model()
         	index = self.ui.tabla.currentIndex()

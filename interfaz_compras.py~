@@ -7,7 +7,7 @@ from PySide import QtGui, QtCore
 import controller
 import editar
 import agregar
-import ui_compras_prod
+import compra_prod
 from ui_compras import Ui_MainWindow
 
 
@@ -25,7 +25,11 @@ class Productos(QtGui.QMainWindow):
 		  self.ui.agregar_btn.clicked.connect(self.agregar_dato)
 		  self.ui.eliminar_btn.clicked.connect(self.eliminar_dato)
 		  self.ui.btn_buscar.clicked.connect(self.cargar_buscar)
-		  self.ui.btn_buscar.clicked.connect(self.compra_btn)
+		  self.ui.compra_btn.clicked.connect(self.compra)
+	def compra(self):
+		form=compra_prod.Form(self)
+		form.rejected.connect(self.dato_nuevo)
+		form.exec_()
 	def agregar_dato(self):
 		form=agregar.Form(self)
 		form.rejected.connect(self.dato_nuevo)
@@ -36,7 +40,24 @@ class Productos(QtGui.QMainWindow):
 		self.cargar_productos(prod)
 
 	def eliminar_dato(self):
-        	
+        	model = self.ui.tabla.model()
+        	index = self.ui.tabla.currentIndex()
+        	if index.row() == -1: 
+            		self.errorMessageDialog = QtGui.QErrorMessage(self)
+            		self.errorMessageDialog.showMessage("Debe seleccionar una fila")
+            		return False
+        	else:
+            		codigo = model.index(index.row(),0, QtCore.QModelIndex()).data()
+            	if (controller.delete(codigo)):
+                	self.cargar_productos()
+                	msgBox = QtGui.QMessageBox()
+                	msgBox.setText("EL registro fue eliminado.")
+                	msgBox.exec_()
+                	return True
+            	else:
+                	self.ui.errorMessageDialog = QtGui.QErrorMessage(self)
+                	self.ui.errorMessageDialog.showMessage("Error al eliminar el registro")
+                	return False
             		
                 	return False			  
 	def editar_dato(self):

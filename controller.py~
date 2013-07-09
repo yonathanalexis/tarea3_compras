@@ -23,10 +23,11 @@ def editar_producto(codigo,nombre,descripcion,marca,color):
     c = con.cursor()
     query1= """SELECT id_producto FROM productos WHERE codigo=?"""
     resultado = c.execute(query1,[codigo])
-    id_producto=resultado.fetchone()	
+    id_producto=resultado.fetchone()
+    print id_producto[0]	
     query = "UPDATE productos SET codigo=?,nombre=?,descripcion=?,marca=?,color=? WHERE id_producto=?"
     try:
-        resultado = c.execute(query,[codigo,nombre,descripcion,marca,color,id_producto])
+        resultado = c.execute(query,[codigo,nombre,descripcion,marca,color,id_producto[0]])
         con.commit()
         exito = True
     except sqlite3.Error as e:
@@ -39,7 +40,7 @@ def delete(dato):
     exito = False
     con = connect()
     c = con.cursor()
-    query = "DELETE FROM productos WHERE id_producto = ?"
+    query = "DELETE FROM productos WHERE codigo = ?"
     try:
         resultado = c.execute(query, [dato])
         con.commit()
@@ -71,7 +72,7 @@ def buscar_producto(word):
     c = con.cursor()
     query = """SELECT a.codigo, a.nombre, a.descripcion, a.marca,a.color
             FROM productos a
-            WHERE (a.codigo LIKE '%'||?||'%' OR a.nombre LIKE '%'||?||'%' OR a. LIKE '%'||?||'%' )"""
+            WHERE (a.codigo LIKE '%'||?||'%' OR a.nombre LIKE '%'||?||'%' OR a.marca LIKE '%'||?||'%' )"""
 
     result = c.execute(query, [word, word, word])
     seleccion= result.fetchall()
