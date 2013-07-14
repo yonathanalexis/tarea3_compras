@@ -21,7 +21,7 @@ class Form(QtGui.QDialog):
 		marca = self.ui.marca_prod.text()
 
 
-		result = controller.agregar_producto(codigo,nombre,descripcion, color,marca)
+		result = controller.agregar_producto(codigo,nombre,descripcion,marca,color)
 
 		if result:
 			self.reject() #Cerramos y esto cargara nuevamente la grilla

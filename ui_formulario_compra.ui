@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>362</width>
+    <height>168</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QPushButton" name="agregar">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>130</y>
+     <width>98</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>agregar</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="cancelar">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>130</y>
+     <width>98</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>cancelar</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="precio">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>50</y>
+     <width>151</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="placeholderText">
+    <string>Ingresar Precio</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="cantidad">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>90</y>
+     <width>151</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="placeholderText">
+    <string>Ingresar Cantidad</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>66</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Producto</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>50</y>
+     <width>111</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Precio unitario:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>90</y>
+     <width>66</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cantidad:</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

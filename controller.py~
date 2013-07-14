@@ -7,7 +7,31 @@ def connect():
     con = sqlite3.connect('data.db')
     con.row_factory = sqlite3.Row
     return con
-
+def agr_compra(cantidad,precio,total):
+    exito = False
+    con = connect()
+    c = con.cursor()
+    query1= """SELECT id_producto FROM productos WHERE codigo=?"""
+    resultado = c.execute(query1,[codigo])
+    id_producto=resultado.fetchone()
+    query = " INSERT INTO compra_has_producto (fk_id_producto,cantidad,precio_unitario,total) VALUES (?,?,?,?)"
+    try:
+        c.execute(query,[id_producto[0],cantidad,precio,total])
+        con.commit()
+        exito = True
+    except sqlite3.Error as e:
+        exito = False
+        print "Error:", e.args[0]
+    con.close()
+    return exito
+def get_prod_compra():
+    con = connect()
+    c = con.cursor()
+    query = """SELECT a.codigo,a.nombre,a.descripcion,a.marca,a.color,b.cantidad,b.precio_unitario,b.total FROM productos a,compra_has_producto b WHERE a.id_producto=b.fk_id_producto """
+    result = c.execute(query)
+    prod = result.fetchall()
+    con.close()
+    return prod
 def get_productos():
     con = connect()
     c = con.cursor()
@@ -23,8 +47,7 @@ def editar_producto(codigo,nombre,descripcion,marca,color):
     c = con.cursor()
     query1= """SELECT id_producto FROM productos WHERE codigo=?"""
     resultado = c.execute(query1,[codigo])
-    id_producto=resultado.fetchone()
-    print id_producto[0]	
+    id_producto=resultado.fetchone()	
     query = "UPDATE productos SET codigo=?,nombre=?,descripcion=?,marca=?,color=? WHERE id_producto=?"
     try:
         resultado = c.execute(query,[codigo,nombre,descripcion,marca,color,id_producto[0]])

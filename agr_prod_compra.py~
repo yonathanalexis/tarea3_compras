@@ -1,0 +1,30 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+from PySide import QtGui, QtCore
+import controller
+import compra_prod
+from  compra_agr import Ui_Form
+
+class Form(QtGui.QDialog):
+	def __init__(self,parent=None,codigo=None):
+		QtGui.QDialog.__init__(self,parent)
+		self.ui=Ui_Form()
+		self.ui.setupUi(self)
+		self.codigo=codigo
+		self.ui.cancelar.clicked.connect(self.cancel)
+		self.ui.agregar.clicked.connect(self.agregar_prod)
+	def agregar_prod(self):
+		total=0
+		precio=self.ui.precio.text()
+		cantidad = self.ui.cantidad.text()
+		for i in range(1,int(cantidad)):
+			total=int(precio)+int(total)
+		
+		controller.agr_compra(precio,cantidad,total,codigo)
+				
+		self.reject()
+		
+
+	def cancel(self):
+		self.reject()
