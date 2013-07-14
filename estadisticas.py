@@ -1,28 +1,35 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import sys
-
 from PySide import QtGui, QtCore
-import controller
-from ui_compras import Ui_MainWindow
+import controller 
+import interfaz_compras
+from ui_estadisticas import Ui_Form
 
-class Productos(QtGui.QWidget):
-
-	def __init__(self):
-		  super(productos,self).__init__()
-		  self.ui =  Ui_MainWindow()        
-		  self.ui.setupUi(self)
-		  self.cargar_productos()
-		  self.show()
-		  self.set_listeners()
-
-        def cargar_productos(self, producto=None):
+class Form(QtGui.QDialog):
+	def __init__(self,parent=None):
+		QtGui.QDialog.__init__(self,parent)
+		self.ui=Ui_Form()
+		self.ui.setupUi(self)
+		self.cargar_compras()
+	def set_listeners(self):
+		self.ui.btn_salir.clicked.connect(self.cancel)
+		self.ui.btn_buscar.clicked.connect(self.buscar_compra)
+		self.ui.btn_eliminar.clicked.connect(self.eliminar_compra)
+		self.ui.btn_editar.clicked.connect(self.editar_compra)
+	def buscar_compra(self):
+		print("asa")
+	def eliminar_compra(self):
+		print("asa")
+	def editar_compra(self):
+		print("asa")
+	def cargar_compras(self, producto=None):
 		if producto is None:
 		    producto = controller.get_productos()
+		
 
 		
-		self.model = QtGui.QStandardItemModel(len(producto), 5)
+		self.model = QtGui.QStandardItemModel(len(producto), 4)
 		self.model.setHorizontalHeaderItem(0, QtGui.QStandardItem(u"Codigo"))
 		self.model.setHorizontalHeaderItem(1, QtGui.QStandardItem(u"Nombre"))
 		self.model.setHorizontalHeaderItem(2, QtGui.QStandardItem(u"Descripcion"))
@@ -43,18 +50,13 @@ class Productos(QtGui.QWidget):
 		    self.model.setData(index, row['color'])
 		    r = r+1
 
-		self.ui.tabla_productos.setModel(self.model)
-		self.ui.tabla_productos.setColumnWidth(0, 90)
-		self.ui.tabla_productos.setColumnWidth(1, 150)
-		self.ui.tabla_productos.setColumnWidth(2, 150)
-		self.ui.tabla_productos.setColumnWidth(3, 150)
-		self.ui.tabla_productos.setColumnWidth(4, 150)
-	
+		self.ui.tbl_compras.setModel(self.model)
+		self.ui.tbl_compras.setColumnWidth(0, 90)
+		self.ui.tbl_compras.setColumnWidth(1, 150)
+		self.ui.tbl_compras.setColumnWidth(2, 150)
+		self.ui.tbl_compras.setColumnWidth(3, 150)
+		self.ui.tbl_compras.setColumnWidth(4, 150)
 
-def run():
-    app = QtGui.QApplication(sys.argv)
-    main = Productos()
-    sys.exit(app.exec_())
-
-if __name__ == '__main__':
-    run()
+		
+	def cancel(self):
+		self.reject()

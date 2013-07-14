@@ -7,6 +7,7 @@ from PySide import QtGui, QtCore
 import controller
 import editar
 import agregar
+import estadisticas
 import compra_prod
 from ui_compras import Ui_MainWindow
 
@@ -26,6 +27,11 @@ class Productos(QtGui.QMainWindow):
 		  self.ui.eliminar_btn.clicked.connect(self.eliminar_dato)
 		  self.ui.btn_buscar.clicked.connect(self.cargar_buscar)
 		  self.ui.compra_btn.clicked.connect(self.compra)
+ 		  self.ui.estadisticas_btn.clicked.connect(self.estadisticas)
+	def estadisticas(self):
+		form=estadisticas.Form(self)
+		form.rejected.connect(self.dato_nuevo)
+		form.exec_()
 	def compra(self):
 		form=compra_prod.Form(self)
 		form.rejected.connect(self.dato_nuevo)
@@ -59,7 +65,8 @@ class Productos(QtGui.QMainWindow):
                 	self.ui.errorMessageDialog.showMessage("Error al eliminar el registro")
                 	return False
             		
-                	return False			  
+                			  
+	
 	def editar_dato(self):
 		model = self.ui.tabla.model()
         	index = self.ui.tabla.currentIndex()
