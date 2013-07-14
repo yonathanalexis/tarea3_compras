@@ -40,6 +40,14 @@ def get_productos():
     prod = result.fetchall()
     con.close()
     return prod
+def get_compra():
+    con = connect()
+    c = con.cursor()
+    query = """SELECT a.fecha,a.proveedor,a.numero_factura,a.descripcion,b.total FROM compra a, compra_has_producto b"""
+    result = c.execute(query)
+    prod = result.fetchall()
+    con.close()
+    return prod
 #actualiza la base de dato con respecto a los datos ingresado
 def editar_producto(codigo,nombre,descripcion,marca,color):
     exito = False
@@ -90,6 +98,17 @@ def agregar_producto(codigo,nombre,descripcion,marca,color):
         print "Error:", e.args[0]
     con.close()
     return exito
+def buscar_compra(word_c,word_p):
+    con = connect()
+    c = con.cursor()
+    query = """SELECT a.fecha, a.proveedor, a.numero_factura, a.descripcion
+            FROM compra a,produtos b
+            WHERE (a.codigo LIKE '%'||?||'%' OR a.nombre LIKE '%'||?||'%' OR b.fecha LIKE '%'||?||'%' OR b.proveedor LIKE '%'||?||'%'OR b.numero_factura LIKE '%'||?||'%' )"""
+
+    result = c.execute(query, [word_p, word_p, word_c, word_c, word_c])
+    seleccion= result.fetchall()
+    con.close()
+    return seleccion
 def buscar_producto(word):
     con = connect()
     c = con.cursor()
