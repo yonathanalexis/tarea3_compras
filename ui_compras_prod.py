@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_compras_prod.ui'
 #
-# Created: Mon Jul  8 01:14:13 2013
+# Created: Sun Jul 14 15:35:32 2013
 #      by: pyside-uic 0.2.14 running on PySide 1.1.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -36,11 +36,14 @@ class Ui_Form(object):
         self.editar_prod.setGeometry(QtCore.QRect(130, 540, 98, 27))
         self.editar_prod.setObjectName("editar_prod")
         self.label = QtGui.QLabel(Form)
-        self.label.setGeometry(QtCore.QRect(490, 540, 101, 17))
+        self.label.setGeometry(QtCore.QRect(480, 270, 101, 17))
         self.label.setObjectName("label")
         self.total_compra = QtGui.QPlainTextEdit(Form)
-        self.total_compra.setGeometry(QtCore.QRect(590, 520, 191, 51))
+        self.total_compra.setGeometry(QtCore.QRect(590, 260, 191, 51))
         self.total_compra.setObjectName("total_compra")
+        self.fin = QtGui.QPushButton(Form)
+        self.fin.setGeometry(QtCore.QRect(650, 530, 131, 41))
+        self.fin.setObjectName("fin")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -53,4 +56,5 @@ class Ui_Form(object):
         self.eliminar_prod.setText(QtGui.QApplication.translate("Form", "Eliminar", None, QtGui.QApplication.UnicodeUTF8))
         self.editar_prod.setText(QtGui.QApplication.translate("Form", "Editar", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("Form", "Total Compra:", None, QtGui.QApplication.UnicodeUTF8))
+        self.fin.setText(QtGui.QApplication.translate("Form", "Finalizar Compra", None, QtGui.QApplication.UnicodeUTF8))
 
