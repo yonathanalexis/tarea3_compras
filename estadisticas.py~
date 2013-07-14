@@ -23,7 +23,25 @@ class Form(QtGui.QDialog):
 		prod = controller.buscar_compra(dato1,dato2)
 		self.productos(prod)
 	def eliminar_compra(self):
-		print("asa")
+		model = self.ui.tbl_compra.model()
+        	index = self.ui.tbl_compra.currentIndex()
+        	if index.row() == -1: 
+            		self.errorMessageDialog = QtGui.QErrorMessage(self)
+            		self.errorMessageDialog.showMessage("Debe seleccionar una fila")
+            		return False
+        	else:
+            		codigo = model.index(index.row(),0, QtCore.QModelIndex()).data()
+            	if (controller.delete(codigo)):
+                	self.cargar_compras()
+                	msgBox = QtGui.QMessageBox()
+                	msgBox.setText("EL registro fue eliminado.")
+                	msgBox.exec_()
+                	return True
+            	else:
+                	self.ui.errorMessageDialog = QtGui.QErrorMessage(self)
+                	self.ui.errorMessageDialog.showMessage("Error al eliminar el registro")
+                	return False
+            		
 	def editar_compra(self):
 		print("asa")
 	def cargar_compras(self, compra=None):
@@ -32,7 +50,8 @@ class Form(QtGui.QDialog):
 		
 
 		
-		self.model = QtGui.QStandardItemModel(len(producto), 4)
+
+		self.model = QtGui.QStandardItemModel(len(compra), 4)
 		self.model.setHorizontalHeaderItem(0, QtGui.QStandardItem(u"Fecha"))
 		self.model.setHorizontalHeaderItem(1, QtGui.QStandardItem(u"Proveedor"))
 		self.model.setHorizontalHeaderItem(2, QtGui.QStandardItem(u"N° Factura"))

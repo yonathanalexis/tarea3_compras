@@ -43,7 +43,7 @@ def get_productos():
 def get_compra():
     con = connect()
     c = con.cursor()
-    query = """SELECT fecha,proveedor,numero_factura,descripcion FROM compra"""
+    query = """SELECT a.fecha,a.proveedor,a.numero_factura,a.descripcion,b.total FROM compra a, compra_has_producto b"""
     result = c.execute(query)
     prod = result.fetchall()
     con.close()

@@ -109,6 +109,17 @@ def buscar_compra(word_c,word_p):
     seleccion= result.fetchall()
     con.close()
     return seleccion
+def buscar_compra_realizada(word):
+    con = connect()
+    c = con.cursor()
+    query = """SELECT a.nombre, a.marca, b.precio_unitario, b.cantidad, b.total
+            FROM produtos a,compra_has_producto b
+            WHERE (a.codigo LIKE '%'||?||'%' OR a.nombre LIKE '%'||?||'%' OR a.marca LIKE '%'||?||'%' OR a.color LIKE '%'||?||'%'OR a.descripcion LIKE '%'||?||'%' )"""
+
+    result = c.execute(query, [word,word,word,word,word])
+    seleccion= result.fetchall()
+    con.close()
+    return seleccion
 def buscar_producto(word):
     con = connect()
     c = con.cursor()

@@ -3,9 +3,9 @@
 
 from PySide import QtGui, QtCore
 import controller 
-import editar_compra
+import editar_producto
 import interfaz_compras
-from ui_estadisticas import Ui_Form
+from ui_editar_compra import Ui_Form
 
 class Form(QtGui.QDialog):
 	def __init__(self,parent=None):
@@ -14,15 +14,15 @@ class Form(QtGui.QDialog):
 		self.ui.setupUi(self)
 		self.cargar_compras()
 	def set_listeners(self):
-		self.ui.btn_salir.clicked.connect(self.cancel)
+		self.ui.btn_aceptar.clicked.connect(self.cancel)
 		self.ui.btn_buscar.clicked.connect(self.buscar_compra)
 		self.ui.btn_eliminar.clicked.connect(self.eliminar_compra)
 		self.ui.btn_editar.clicked.connect(self.editar_compra_unitaria)
+		
 	def buscar_compra(self):
-		dato1 = self.ui.bus_compra.text()
-		dato2 = self.ui.bus_producto.text()
-		prod = controller.buscar_compra(dato1,dato2)
-		self.cargar_compras(prod)
+		dato = self.ui.bus_compra.text()
+		prod = controller.buscar_compra(dato)
+		self.productos(prod)
 	def eliminar_compra(self):
 		model = self.ui.tbl_compra.model()
         	index = self.ui.tbl_compra.currentIndex()
