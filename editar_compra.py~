@@ -3,8 +3,7 @@
 
 from PySide import QtGui, QtCore
 import controller 
-import editar_producto
-import interfaz_compras
+#import editar_producto
 from ui_editar_compra import Ui_Form
 
 class Form(QtGui.QDialog):

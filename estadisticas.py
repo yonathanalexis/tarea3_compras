@@ -12,6 +12,7 @@ class Form(QtGui.QDialog):
 		QtGui.QDialog.__init__(self,parent)
 		self.ui=Ui_Form()
 		self.ui.setupUi(self)
+		self.set_listeners()
 		self.cargar_compras()
 	def set_listeners(self):
 		self.ui.btn_salir.clicked.connect(self.cancel)

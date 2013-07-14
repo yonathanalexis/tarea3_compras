@@ -4,11 +4,11 @@
 from PySide import QtGui, QtCore
 import controller 
 #import editar_producto
-import interfaz_compras
 from ui_editar_compra import Ui_Form
 
 class Form(QtGui.QDialog):
 	def __init__(self,parent=None):
+		print("asas")
 		QtGui.QDialog.__init__(self,parent)
 		self.ui=Ui_Form()
 		self.ui.setupUi(self)
