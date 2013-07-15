@@ -23,20 +23,19 @@ class Form(QtGui.QDialog):
 		self.ui.cancelar.clicked.connect(self.cancel)
 		self.ui.agregar.clicked.connect(self.editar_prod)
 
-		
-	
-	#envia lo ingresado a editar_prducto de controller.py
 	def editar_prod(self):
-			codigo=self.ui.codigo_prod.text()
-			nombre=self.ui.nombre_prod.text()
-			descripcion=self.ui.descripcion_prod.text()
-			marca=self.ui.marca_prod.text()
-			color=self.ui.color_prod.text()
-			resultado=controller.editar_producto(codigo,nombre,descripcion,marca,color)
-
-			if resultado:
-				self.reject()
+	        """
+		envia lo ingresado a editar_prducto de controller.py
+		"""
+	        codigo=self.ui.codigo_prod.text()
+		nombre=self.ui.nombre_prod.text()
+		descripcion=self.ui.descripcion_prod.text()
+		marca=self.ui.marca_prod.text()
+		color=self.ui.color_prod.text()
+		resultado=controller.editar_producto(codigo,nombre,descripcion,marca,color)
+		if resultado:
+		    self.reject()
 		
 			
 	def cancel(self):
-				self.reject()
+		self.reject()

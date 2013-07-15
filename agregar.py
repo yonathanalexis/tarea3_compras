@@ -13,7 +13,11 @@ class Form(QtGui.QDialog):
 		self.ui.setupUi(self)
 		self.ui.cancelar.clicked.connect(self.cancel)
 		self.ui.agregar.clicked.connect(self.agregar_prod)
+	
 	def agregar_prod(self):
+		"""
+		Funcion para agregar un producto nuevo
+		"""
 		codigo=self.ui.codigo_prod.text()
 		nombre = self.ui.nombre_prod.text()
 		descripcion = self.ui.descripcion_prod.text()
@@ -24,8 +28,7 @@ class Form(QtGui.QDialog):
 		result = controller.agregar_producto(codigo,nombre,descripcion,marca,color)
 
 		if result:
-			self.reject() #Cerramos y esto cargara nuevamente la grilla
-		#else:
-			#self.ui.mensajes.setText("Hubo un problema al intentar crear el alumno")
+			self.reject()
+
 	def cancel(self):
 		self.reject()

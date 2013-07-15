@@ -55,4 +55,13 @@ class Ui_MainWindow(object):
         self.agregar_btn.setText(QtGui.QApplication.translate("MainWindow", "Agregar", None, QtGui.QApplication.UnicodeUTF8))
         self.compra_btn.setText(QtGui.QApplication.translate("MainWindow", "Nueva Compra", None, QtGui.QApplication.UnicodeUTF8))
         self.estadisticas_btn.setText(QtGui.QApplication.translate("MainWindow", "Compras", None, QtGui.QApplication.UnicodeUTF8))
+        
+        self.btn_buscar.setIcon(QtGui.QIcon("buscar_prod.ico"))
+        self.eliminar_btn.setIcon(QtGui.QIcon("eliminar_prod.ico"))
+        self.editar_btn.setIcon(QtGui.QIcon("editar_prod.ico"))
+        self.agregar_btn.setIcon(QtGui.QIcon("agregar_prod.ico"))
+        self.compra_btn.setIcon(QtGui.QIcon("nueva_compra.ico"))
+        self.compra_btn.setIconSize(QtCore.QSize(45,45))
+        self.estadisticas_btn.setIcon(QtGui.QIcon("compras.ico"))
+	self.estadisticas_btn.setIconSize(QtCore.QSize(45,45))
 

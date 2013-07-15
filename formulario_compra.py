@@ -15,7 +15,11 @@ class Form(QtGui.QDialog):
 		self.total_compra=0
 		self.ui.cancelar.clicked.connect(self.cancel)
 		self.ui.agregar.clicked.connect(self.agregar_prod)
+	
 	def agregar_prod(self):
+		"""
+		Funcion para agregar un nuevo producto
+		"""
 		total=0
 		precio=self.ui.precio.text()
 		cantidad = self.ui.cantidad.text()
@@ -25,7 +29,6 @@ class Form(QtGui.QDialog):
 		self.total_compra=self.total_compra+total
 		controller.agr_compra(precio,cantidad,total,self.codigo)		
 		self.reject()
-		
 
 	def cancel(self):
 		self.reject()

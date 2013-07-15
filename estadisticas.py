@@ -14,17 +14,29 @@ class Form(QtGui.QDialog):
 		self.ui.setupUi(self)
 		self.set_listeners()
 		self.cargar_compras()
+	
 	def set_listeners(self):
+		"""
+		Funcion para implemetar listeners
+		"""
 		self.ui.btn_salir.clicked.connect(self.cancel)
 		self.ui.btn_buscar.clicked.connect(self.buscar_compra)
 		self.ui.btn_eliminar.clicked.connect(self.eliminar_compra)
 		self.ui.btn_editar.clicked.connect(self.editar_compra_unitaria)
+	
 	def buscar_compra(self):
+		"""
+		Funcion para buscar compra en la base de datos
+		"""
 		dato1 = self.ui.bus_compra.text()
 		dato2 = self.ui.bus_producto.text()
 		prod = controller.buscar_compra(dato1,dato2)
 		self.cargar_compras(prod)
+	
 	def eliminar_compra(self):
+		"""
+		Funcion para eliminar compra seleccionada"
+		"""
 		model = self.ui.tbl_compras.model()
         	index = self.ui.tbl_compras.currentIndex()
         	if index.row() == -1: 
@@ -45,6 +57,9 @@ class Form(QtGui.QDialog):
                 	return False
             		
 	def editar_compra_unitaria(self):
+	        """
+	        Funcion para editar compra seleccionada
+	        """
 		model = self.ui.tbl_compras.model()
         	index = self.ui.tbl_compras.currentIndex()
         	if index.row() == -1: 
@@ -57,21 +72,25 @@ class Form(QtGui.QDialog):
 		form=editar_compra.Form(self,codigo)
 		form.rejected.connect(self.dato_nuevo)
 		form.exec_()
+	
 	def dato_nuevo(self):
+	        """
+	        
+	        """
 	        self.cargar_compras()   
+	
 	def cargar_compras(self, compra=None):
+		"""
+		Funcion para cargar las compras en la grilla
+		"""
 		if compra is None:
 		    compra = controller.get_compra()
-		    #id_=controller.get_id_compra()
-
 		self.model = QtGui.QStandardItemModel(len(compra), 4)
 		self.model.setHorizontalHeaderItem(0, QtGui.QStandardItem(u"codigo"))
-		
 		self.model.setHorizontalHeaderItem(1, QtGui.QStandardItem(u"Fecha"))
 		self.model.setHorizontalHeaderItem(2, QtGui.QStandardItem(u"Proveedor"))
 		self.model.setHorizontalHeaderItem(3, QtGui.QStandardItem(u"N° Factura"))
 		self.model.setHorizontalHeaderItem(4, QtGui.QStandardItem(u"Descripcion"))
-		
 		r = 0
 		#total=0
 		#suma=0;
@@ -102,10 +121,8 @@ class Form(QtGui.QDialog):
 		    index = self.model.index(r, 3, QtCore.QModelIndex()); 
 		    self.model.setData(index, row['numero_factura'])
 		    index = self.model.index(r, 4, QtCore.QModelIndex()); 
-		    self.model.setData(index, row['descripcion'])
-		    
+		    self.model.setData(index, row['descripcion']) 
 		    r = r+1
-
 		self.ui.tbl_compras.setModel(self.model)
 		self.ui.tbl_compras.setColumnWidth(0, 50)
 		self.ui.tbl_compras.setColumnWidth(1, 150)
@@ -113,6 +130,5 @@ class Form(QtGui.QDialog):
 		self.ui.tbl_compras.setColumnWidth(3, 150)
 		self.ui.tbl_compras.setColumnWidth(4, 150)
 
-		
 	def cancel(self):
 		self.reject()

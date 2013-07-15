@@ -14,7 +14,11 @@ class Form(QtGui.QDialog):
 		self.ui.setupUi(self)
 		self.ui.cancelar.clicked.connect(self.cancel)
 		self.ui.aceptar.clicked.connect(self.agregar_prod_compra)
+	
 	def agregar_prod_compra(self):
+	        """
+	        
+	        """
 		p=datetime.today()
 		date=p.strftime("%d/%m/%Y")
 		proveedor=self.ui.proveedor.text()
@@ -23,5 +27,6 @@ class Form(QtGui.QDialog):
 		form=compra_prod.Form(self,codigo)
 		form.exec_()	
 		self.reject()
+	
 	def cancel(self):
 		self.reject()

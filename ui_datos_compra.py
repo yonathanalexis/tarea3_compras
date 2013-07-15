@@ -42,3 +42,5 @@ class Ui_Form(object):
         self.label_2.setText(QtGui.QApplication.translate("Form", "Proveedor:", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("Form", "Descripcion:", None, QtGui.QApplication.UnicodeUTF8))
 
+	self.aceptar.setIcon(QtGui.QIcon("aceptar_accion.ico"))
+	self.cancelar.setIcon(QtGui.QIcon("cancelar_accion.ico"))
