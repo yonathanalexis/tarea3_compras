@@ -7,8 +7,8 @@ from PySide import QtGui, QtCore
 import controller
 import editar
 import agregar
+import datos_compra
 import estadisticas
-import compra_prod
 from ui_compras import Ui_MainWindow
 
 
@@ -33,7 +33,7 @@ class Productos(QtGui.QMainWindow):
 		form.rejected.connect(self.dato_nuevo)
 		form.exec_()
 	def compra(self):
-		form=compra_prod.Form(self)
+		form=datos_compra.Form(self)
 		form.rejected.connect(self.dato_nuevo)
 		form.exec_()
 	def agregar_dato(self):

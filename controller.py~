@@ -24,11 +24,30 @@ def agr_compra(cantidad,precio,total,codigo):
         print "Error:", e.args[0]
     con.close()
     return exito
-def get_prod_compra():
+
+def agr_dato(fecha,proveedor,descripcion):#crea una compra con los datos ingresados como proveedor y descripcion y la fecha desde el pc
+    exito = False
     con = connect()
     c = con.cursor()
-    query = """SELECT a.codigo,a.nombre,a.descripcion,a.marca,a.color,b.cantidad,b.precio_unitario,b.total FROM productos a,compra_has_producto b WHERE a.id_producto=b.fk_id_producto """
-    result = c.execute(query)
+    todos=[fecha,proveedor,-1,descripcion]
+    query1= """INSERT INTO compra (fecha,proveedor,numero_factura,descripcion) VALUES (?,?,?,?)"""
+    resultado = c.execute(query1,todos)
+    con.commit()
+    query3= """SELECT * FROM compra WHERE numero_factura=?"""
+    resultado = c.execute(query3,[-1])
+    con.commit()
+    id_compra=resultado.fetchone()
+    print(id_compra[0])
+    query2="""UPDATE compra SET numero_factura=?"""
+    c.execute(query2,[id_compra[0]])
+    con.commit()
+    con.close()
+    return id_compra[0]
+def get_prod_compra(codigo):
+    con = connect()
+    c = con.cursor()
+    query = """SELECT a.codigo,a.nombre,a.marca,b.cantidad,b.precio_unitario,b.total FROM productos a,compra_has_producto b, compra c WHERE c.id_compra=? """
+    result = c.execute(query,[codigo])
     prod = result.fetchall()
     con.close()
     return prod
@@ -69,7 +88,7 @@ def cambiar_precios(key,cantidad,precio,descuento):
 def get_compra_unitaria(codigo):
     con = connect()
     c = con.cursor()
-    query = """SELECT a.nombre, a.marca, b.precio_unitario,b.cantidad, b.total FROM productos a,compra_has_producto b WHERE b.fk_id_producto=a.id_producto AND b.fk_id_compra=? """
+    query = """SELECT a.nombre, a.marca, b.precio_unitario,b.cantidad, b.total, b.fk_id_producto FROM productos a,compra_has_producto b WHERE b.fk_id_producto=a.id_producto AND b.fk_id_compra=? """
     result = c.execute(query,[codigo])
     prod = result.fetchall()
     con.close()
@@ -137,6 +156,7 @@ def agregar_producto(codigo,nombre,descripcion,marca,color):
         print "Error:", e.args[0]
     con.close()
     return exito
+
 def buscar_compra(word_c,word_p):
     con = connect()
     c = con.cursor()

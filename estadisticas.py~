@@ -65,7 +65,7 @@ class Form(QtGui.QDialog):
 		    #id_=controller.get_id_compra()
 
 		self.model = QtGui.QStandardItemModel(len(compra), 4)
-		self.model.setHorizontalHeaderItem(0, QtGui.QStandardItem(u"id_compra"))
+		self.model.setHorizontalHeaderItem(0, QtGui.QStandardItem(u"codigo"))
 		
 		self.model.setHorizontalHeaderItem(1, QtGui.QStandardItem(u"Fecha"))
 		self.model.setHorizontalHeaderItem(2, QtGui.QStandardItem(u"Proveedor"))

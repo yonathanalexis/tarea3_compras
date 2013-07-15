@@ -94,7 +94,7 @@ class Form(QtGui.QDialog):
 		    r = r+1
 
 		self.ui.tbl_compra.setModel(self.model)
-		self.ui.tbl_compra.setColumnWidth(0, 90)
+		self.ui.tbl_compra.setColumnWidth(0, 50)
 		self.ui.tbl_compra.setColumnWidth(1, 150)
 		self.ui.tbl_compra.setColumnWidth(2, 150)
 		self.ui.tbl_compra.setColumnWidth(3, 150)

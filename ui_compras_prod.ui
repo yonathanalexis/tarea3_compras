@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>619</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -51,7 +51,7 @@
      <x>10</x>
      <y>51</y>
      <width>771</width>
-     <height>201</height>
+     <height>171</height>
     </rect>
    </property>
   </widget>
@@ -59,7 +59,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>260</y>
+     <y>230</y>
      <width>121</width>
      <height>41</height>
     </rect>
@@ -72,19 +72,19 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>320</y>
+     <y>281</y>
      <width>771</width>
-     <height>192</height>
+     <height>231</height>
     </rect>
    </property>
   </widget>
   <widget class="QPushButton" name="eliminar_prod">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>540</y>
-     <width>98</width>
-     <height>27</height>
+     <x>567</x>
+     <y>236</y>
+     <width>101</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
@@ -94,10 +94,10 @@
   <widget class="QPushButton" name="editar_prod">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>540</y>
+     <x>680</x>
+     <y>236</y>
      <width>98</width>
-     <height>27</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
@@ -108,7 +108,7 @@
    <property name="geometry">
     <rect>
      <x>480</x>
-     <y>270</y>
+     <y>590</y>
      <width>101</width>
      <height>17</height>
     </rect>
@@ -117,27 +117,78 @@
     <string>Total Compra:</string>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="total_compra">
-   <property name="geometry">
-    <rect>
-     <x>590</x>
-     <y>260</y>
-     <width>191</width>
-     <height>51</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QPushButton" name="fin">
    <property name="geometry">
     <rect>
-     <x>650</x>
-     <y>530</y>
+     <x>20</x>
+     <y>570</y>
      <width>131</width>
      <height>41</height>
     </rect>
    </property>
    <property name="text">
     <string>Finalizar Compra</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>500</x>
+     <y>550</y>
+     <width>81</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Descuento:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="line_descuento">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>540</y>
+     <width>91</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="placeholderText">
+    <string>Descuento</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>690</x>
+     <y>540</y>
+     <width>66</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="lineWidth">
+    <number>1</number>
+   </property>
+   <property name="text">
+    <string>%</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="line_total">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>580</y>
+     <width>171</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="placeholderText">
+    <string>Total de la compra</string>
    </property>
   </widget>
  </widget>
