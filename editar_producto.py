@@ -27,9 +27,22 @@ class Form(QtGui.QDialog):
 		precio=self.ui.line_precio.text()
 		cantidad = self.ui.line_cantidad.text()
 		descuento = self.ui.line_descuento.text()
-		desc=(int(precio)-((int(descuento))/100))
-		total=desc*(int(cantidad))
-		result = controller.cambiar_precios(self.codigo,self.key,cantidad,precio,total)
+		try:
+			prec=int(precio)
+       			cantidad=int(cantidad)
+			
+			
+			if (len(descuento)!=0):
+					dec=int(descuento)
+					desc=(int(precio)*int(cantidad)*(int(descuento)))/100
+			
+			
+			total=int(precio)*int(cantidad)-desc
+			result = controller.cambiar_precios(self.codigo,self.key,int(cantidad),int(precio),total)		
+		except ValueError:
+			self.errorMessageDialog = QtGui.QErrorMessage(self)
+            		self.errorMessageDialog.showMessage("Deben ser solo numeros y debe ingresar obligatoiamente el campo precio y cantidad")
+		
 		if result:
 			self.reject()
  		

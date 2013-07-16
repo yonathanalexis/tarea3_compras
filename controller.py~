@@ -256,19 +256,19 @@ def agregar_producto(codigo,nombre,descripcion,marca,color):
     con.close()
     return exito
 def buscar_compra_realizada(word,codigo):#;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-"""
-Funcion para filtrar compras en la grilla
-"""
-con = connect()
-c = con.cursor()
-query = """SELECT a.nombre, a.marca, b.precio_unitario,b.cantidad, b.total, b.fk_id_producto
-FROM productos a,compra_has_producto b
-WHERE ((a.codigo LIKE '%'||?||'%' OR a.nombre LIKE '%'||?||'%' OR a.marca LIKE '%'||?||'%' OR a.color LIKE '%'||?||'%'OR a.descripcion LIKE '%'||?||'%') AND (b.fk_id_producto=a.id_producto AND b.fk_id_compra=?))"""
+	"""
+	Funcion para filtrar compras en la grilla
+	"""
+	con = connect()
+	c = con.cursor()
+	query = """SELECT a.nombre, a.marca, b.precio_unitario,b.cantidad, b.total, b.fk_id_producto
+	FROM productos a,compra_has_producto b
+	WHERE ((a.codigo LIKE '%'||?||'%' OR a.nombre LIKE '%'||?||'%' OR a.marca LIKE '%'||?||'%' OR a.color LIKE '%'||?||'%'OR a.descripcion LIKE '%'||?||'%') AND (b.fk_id_producto=a.id_producto AND b.fk_id_compra=?))"""
 
-result = c.execute(query, [word,word,word,word,word,codigo])
-seleccion= result.fetchall()
-con.close()
-return seleccion
+	result = c.execute(query, [word,word,word,word,word,codigo])
+	seleccion= result.fetchall()
+	con.close()
+	return seleccion
 def buscar_compra(word_c,word_p):
 	"""
 	busca una compra con un filtro de productos

@@ -27,8 +27,8 @@ class Form(QtGui.QDialog):
 		precio=self.ui.line_precio.text()
 		cantidad = self.ui.line_cantidad.text()
 		descuento = self.ui.line_descuento.text()
-		desc=(int(precio)*int(cantidad)*int(descuento))/100
-		total=total-desc
+		desc=(int(precio)-((int(descuento))/100))
+		total=(desc*(int(cantidad)))
 		result = controller.cambiar_precios(self.codigo,self.key,cantidad,precio,total)
 		if result:
 			self.reject()

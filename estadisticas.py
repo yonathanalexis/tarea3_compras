@@ -55,7 +55,6 @@ class Form(QtGui.QDialog):
                 	self.ui.errorMessageDialog = QtGui.QErrorMessage(self)
                 	self.ui.errorMessageDialog.showMessage("Error al eliminar el registro")
                 	return False
-            		
 	def editar_compra_unitaria(self):
 	        """
 	        Funcion para editar compra seleccionada

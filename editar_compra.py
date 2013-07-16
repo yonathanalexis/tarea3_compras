@@ -32,6 +32,7 @@ class Form(QtGui.QDialog):
 		prod = controller.buscar_compra_realizada(dato,self.codigo)
 		self.cargar_compra_productos(prod)
 
+
 	def eliminar_compra_producto(self):
 	        """
 		funcion para eliminar compra seleccionada
