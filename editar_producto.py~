@@ -6,28 +6,32 @@ import controller
 from ui_editar_producto import Ui_Form
 
 class Form(QtGui.QDialog):
-	def __init__(self,parent=None,key=None):#,codigo=None
+	def __init__(self,parent=None,key=None,codigo=None):#producto,compra
 		QtGui.QDialog.__init__(self,parent)
 		self.ui=Ui_Form()
 		self.ui.setupUi(self)
+		self.key=key
+		self.codigo=codigo
 		self.set_listeners()
-		#self.codigo=codigo
-		self.cargar_compra_productos()
 	def set_listeners(self):
+	        """
+		funcion para implementar listeners
+		"""
 		self.ui.btn_salir.clicked.connect(self.cancel)
 		self.ui.btn_aceptar.clicked.connect(self.agregar_cambios)
 
 	def agregar_cambios(self):
+	        """
+		funcion para agregar cambios a datos
+		"""
 		precio=self.ui.line_precio.text()
 		cantidad = self.ui.line_cantidad.text()
 		descuento = self.ui.line_descuento.text()
-
-
-		result = controller.cambiar_precios(self.key,cantidad,precio,descuento)
+		desc=(int(precio)*int(cantidad)*int(descuento))/100
+		total=total-desc
+		result = controller.cambiar_precios(self.codigo,self.key,cantidad,precio,total)
 		if result:
-			self.reject() #Cerramos y esto cargara nuevamente la grilla
-		#else:
-			#self.ui.mensajes.setText("Hubo un problema al intentar crear el alumno")
+			self.reject()
  		
 	def cancel(self):
 		self.reject()

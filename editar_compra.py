@@ -29,9 +29,8 @@ class Form(QtGui.QDialog):
 		funcion para buscar producto necesitado
 		"""
 		dato = self.ui.line_buscar.text()
-		prod = controller.buscar_compra_realizada(dato)
+		prod = controller.buscar_compra_realizada(dato,self.codigo)
 		self.cargar_compra_productos(prod)
-
 
 	def eliminar_compra_producto(self):
 	        """
@@ -45,7 +44,7 @@ class Form(QtGui.QDialog):
             		return False
         	else:
             		codigo = model.index(index.row(),0, QtCore.QModelIndex()).data()
-            	if (controller.delete(codigo)):
+            	if (controller.borrar_prod_com(codigo)):
                 	self.cargar_compra_productos()
                 	msgBox = QtGui.QMessageBox()
                 	msgBox.setText("EL registro fue eliminado.")
@@ -67,9 +66,9 @@ class Form(QtGui.QDialog):
             		self.errorMessageDialog.showMessage("Debe seleccionar una fila")
             		return False
         	else:
-            		codigo = model.index(index.row(),0, QtCore.QModelIndex()).data()
-			print(codigo)
-		form=editar_producto.Form(self,codigo)
+            		cod = model.index(index.row(),0, QtCore.QModelIndex()).data()
+			print(cod)
+		form=editar_producto.Form(self,cod,self.codigo)
 		form.rejected.connect(self.dato_nuevo)
 		form.exec_()
 	
@@ -77,7 +76,7 @@ class Form(QtGui.QDialog):
 	        """
 		funcion para cargar las compras
 		"""
-	        self.cargar_compras()   
+	        self.cargar_compra_productos()   
 	
 	def cargar_compra_productos(self, compra=None):
 	        """
@@ -117,4 +116,11 @@ class Form(QtGui.QDialog):
 
 		
 	def cancel(self):
+		proveedor=self.ui.line_proveedor.text()
+		descripcion= self.ui.line_descripcion.text()
+		controller.editar_prov_des(proveedor,descripcion,self.codigo)
 		self.reject()
+
+
+
+
