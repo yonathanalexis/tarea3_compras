@@ -1,0 +1,23 @@
+Formularios:
+===============
+mediante estos archivos se genera la interfaz grafica de qt Designer para python
+
+
+clases:
+----------------
+
+
+ * ui_formulario.py
+	formulario para ingreso de datos de una compra
+ * ui_estadisticas.py
+	genera el formulario de registro de compras
+ * ui_editar_producto.py
+	genera el formulario de edición de un producto
+ * ui_editar_compra.py
+	formulario de edición de compra
+ * ui_datos_compra.py
+	formulario en el que se ingresa proveedor y descripcion de 		una compra
+ * ui_compras_prod.py
+	formulario de compra de productos
+ * ui_compras.py
+	formulario de compras
