@@ -23,15 +23,10 @@ class Form(QtGui.QDialog):
 		date=p.strftime("%d/%m/%Y")
 		proveedor=self.ui.proveedor.text()
 		descripcion= self.ui.descripcion.text()
-		try:
-		 	if(len(proveedor)!=0 & len(descripcion)!=0):
-				codigo=controller.agr_dato(date,proveedor,descripcion)
-				form=compra_prod.Form(self,codigo)
-				form.exec_()	
-				self.reject()
-		except UnboundLocalError:
-			self.errorMessageDialog = QtGui.QErrorMessage(self)
-            		self.errorMessageDialog.showMessage("DEbe ingresar obligatoriamente la descripcion y el proveedor")
-
+		codigo=controller.agr_dato(date,proveedor,descripcion)
+		form=compra_prod.Form(self,codigo)
+		form.exec_()	
+		self.reject()
+	
 	def cancel(self):
 		self.reject()

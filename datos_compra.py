@@ -25,8 +25,9 @@ class Form(QtGui.QDialog):
 		descripcion= self.ui.descripcion.text()
 		codigo=controller.agr_dato(date,proveedor,descripcion)
 		form=compra_prod.Form(self,codigo)
-		form.exec_()	
+		
 		self.reject()
+		form.exec_()	
 	
 	def cancel(self):
 		self.reject()
