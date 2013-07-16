@@ -85,3 +85,8 @@ class Ui_Form(object):
         self.label_3.setText(QtGui.QApplication.translate("Form", "total de compras:", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_salir.setText(QtGui.QApplication.translate("Form", "Salir", None, QtGui.QApplication.UnicodeUTF8))
 
+	#------------__ICONO_-------------------------------------#
+        self.btn_buscar.setIcon(QtGui.QIcon("buscar_prod.ico"))
+        self.btn_editar.setIcon(QtGui.QIcon("editar_prod.ico"))
+        self.btn_eliminar.setIcon(QtGui.QIcon("eliminar_prod.ico"))
+        self.btn_salir.setIcon(QtGui.QIcon("cancelar.ico"))

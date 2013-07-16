@@ -43,6 +43,11 @@ class Ui_MainWindow(object):
         self.statusbar = QtGui.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
+        ###################################################################3LOGO
+        self.pixmap = QtGui.QPixmap("snap2.png")
+	self.lbl = QtGui.QLabel(self.centralwidget)
+        self.lbl.setPixmap(self.pixmap)
+	###################################################################3LOGO
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -56,6 +61,7 @@ class Ui_MainWindow(object):
         self.compra_btn.setText(QtGui.QApplication.translate("MainWindow", "Nueva Compra", None, QtGui.QApplication.UnicodeUTF8))
         self.estadisticas_btn.setText(QtGui.QApplication.translate("MainWindow", "Compras", None, QtGui.QApplication.UnicodeUTF8))
         
+        #------------__ICONO_-------------------------------------#        
         self.btn_buscar.setIcon(QtGui.QIcon("buscar_prod.ico"))
         self.eliminar_btn.setIcon(QtGui.QIcon("eliminar_prod.ico"))
         self.editar_btn.setIcon(QtGui.QIcon("editar_prod.ico"))

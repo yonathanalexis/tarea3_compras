@@ -53,6 +53,11 @@ class Ui_Form(object):
         self.label_2.setText(QtGui.QApplication.translate("Form", "Descripcion:", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_editar_prod.setText(QtGui.QApplication.translate("Form", "Editar productos", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_aceptar.setText(QtGui.QApplication.translate("Form", "Aceptar", None, QtGui.QApplication.UnicodeUTF8))
-        self.btn_buscar.setText(QtGui.QApplication.translate("Form", "buscar producto", None, QtGui.QApplication.UnicodeUTF8))
+        self.btn_buscar.setText(QtGui.QApplication.translate("Form", "Buscar", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_eliminar.setText(QtGui.QApplication.translate("Form", "Eliminar", None, QtGui.QApplication.UnicodeUTF8))
 
+	#------------__ICONO_-------------------------------------#
+	self.btn_editar_prod.setIcon(QtGui.QIcon("editar_prod.ico"))
+	self.btn_aceptar.setIcon(QtGui.QIcon("finalizar_compra.ico"))
+	self.btn_buscar.setIcon(QtGui.QIcon("buscar_prod.ico"))
+	self.btn_eliminar.setIcon(QtGui.QIcon("eliminar_prod.ico"))

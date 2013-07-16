@@ -81,3 +81,6 @@ class Ui_Form(object):
         self.label_7.setText(QtGui.QApplication.translate("Form", "Color:", None, QtGui.QApplication.UnicodeUTF8))
         self.color_prod.setPlaceholderText(QtGui.QApplication.translate("Form", "Ingresar Color", None, QtGui.QApplication.UnicodeUTF8))
 
+        #------------__ICONO_-------------------------------------#
+	self.agregar.setIcon(QtGui.QIcon("agregar.ico"))
+	self.cancelar.setIcon(QtGui.QIcon("cancelar.ico"))

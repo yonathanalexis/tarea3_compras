@@ -60,3 +60,6 @@ class Ui_Form(object):
         self.label_5.setText(QtGui.QApplication.translate("Form", "%", None, QtGui.QApplication.UnicodeUTF8))
         self.descuento.setPlaceholderText(QtGui.QApplication.translate("Form", "Ingresar Descuento", None, QtGui.QApplication.UnicodeUTF8))
 
+	#------------__ICONO_-------------------------------------#
+	self.agregar.setIcon(QtGui.QIcon("agregar.ico"))
+	self.cancelar.setIcon(QtGui.QIcon("cancelar.ico"))

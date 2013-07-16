@@ -64,3 +64,15 @@ class Ui_Form(object):
         self.line_total.setPlaceholderText(QtGui.QApplication.translate("Form", "Total de la compra", None, QtGui.QApplication.UnicodeUTF8))
         self.cancelar_compra.setText(QtGui.QApplication.translate("Form", "Cancelar Compra", None, QtGui.QApplication.UnicodeUTF8))
 
+	#------------__ICONO_-------------------------------------#	
+	self.buscar_prod_2.setIcon(QtGui.QIcon("buscar_compra.ico"))
+	self.agregar_prod.setIcon(QtGui.QIcon("agregar_compra.ico"))
+	self.agregar_prod.setIconSize(QtCore.QSize(45,45))
+	self.eliminar_prod.setIcon(QtGui.QIcon("eliminar_compra.ico"))
+	self.eliminar_prod.setIconSize(QtCore.QSize(25,25))
+	self.editar_prod.setIcon(QtGui.QIcon("editar_compra.ico"))
+	self.editar_prod.setIconSize(QtCore.QSize(25,25))
+	self.fin.setIcon(QtGui.QIcon("finalizar_compra.ico"))
+	self.fin.setIconSize(QtCore.QSize(25,25))
+	self.cancelar_compra.setIcon(QtGui.QIcon("eliminar_prod.ico"))
+	self.cancelar_compra.setIconSize(QtCore.QSize(25,25))
