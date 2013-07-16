@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_compras_prod.ui'
 #
-# Created: Mon Jul 15 17:15:26 2013
+# Created: Mon Jul 15 21:30:01 2013
 #      by: pyside-uic 0.2.14 running on PySide 1.1.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -36,25 +36,14 @@ class Ui_Form(object):
         self.editar_prod.setGeometry(QtCore.QRect(680, 236, 98, 31))
         self.editar_prod.setObjectName("editar_prod")
         self.label = QtGui.QLabel(Form)
-        self.label.setGeometry(QtCore.QRect(480, 590, 101, 17))
+        self.label.setGeometry(QtCore.QRect(480, 560, 101, 17))
         self.label.setObjectName("label")
         self.fin = QtGui.QPushButton(Form)
         self.fin.setGeometry(QtCore.QRect(20, 570, 131, 41))
         self.fin.setObjectName("fin")
-        self.label_2 = QtGui.QLabel(Form)
-        self.label_2.setGeometry(QtCore.QRect(500, 550, 81, 20))
-        self.label_2.setObjectName("label_2")
-        self.line_descuento = QtGui.QLineEdit(Form)
-        self.line_descuento.setEnabled(True)
-        self.line_descuento.setGeometry(QtCore.QRect(590, 540, 91, 27))
-        self.line_descuento.setObjectName("line_descuento")
-        self.label_3 = QtGui.QLabel(Form)
-        self.label_3.setGeometry(QtCore.QRect(690, 540, 66, 31))
-        self.label_3.setLineWidth(1)
-        self.label_3.setObjectName("label_3")
         self.line_total = QtGui.QLineEdit(Form)
         self.line_total.setEnabled(False)
-        self.line_total.setGeometry(QtCore.QRect(590, 580, 171, 27))
+        self.line_total.setGeometry(QtCore.QRect(590, 550, 171, 41))
         self.line_total.setObjectName("line_total")
         self.cancelar_compra = QtGui.QPushButton(Form)
         self.cancelar_compra.setGeometry(QtCore.QRect(160, 570, 141, 41))
@@ -72,9 +61,6 @@ class Ui_Form(object):
         self.editar_prod.setText(QtGui.QApplication.translate("Form", "Editar", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("Form", "Total Compra:", None, QtGui.QApplication.UnicodeUTF8))
         self.fin.setText(QtGui.QApplication.translate("Form", "Guardar Compra", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_2.setText(QtGui.QApplication.translate("Form", "Descuento:", None, QtGui.QApplication.UnicodeUTF8))
-        self.line_descuento.setPlaceholderText(QtGui.QApplication.translate("Form", "Descuento", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_3.setText(QtGui.QApplication.translate("Form", "%", None, QtGui.QApplication.UnicodeUTF8))
         self.line_total.setPlaceholderText(QtGui.QApplication.translate("Form", "Total de la compra", None, QtGui.QApplication.UnicodeUTF8))
         self.cancelar_compra.setText(QtGui.QApplication.translate("Form", "Cancelar Compra", None, QtGui.QApplication.UnicodeUTF8))
 

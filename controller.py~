@@ -2,9 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sqlite3
-"""
-Funciones para usar la Base de Datos
-"""
+
 def connect():
     con = sqlite3.connect('data.db')
     con.row_factory = sqlite3.Row
@@ -18,10 +16,8 @@ def tomar_id(codigo):
     con.close()
     print id_producto[0]
     return id_producto[0]
-def agr_compra(cantidad,precio,total,codigo,id_compra):	
-    """
-    Funcion para agregar compra un nuevo item a la la tabla de compras
-    """
+def agr_compra(cantidad,precio,total,codigo,id_compra):
+
     exito = False
     con = connect()
     c = con.cursor()
@@ -51,16 +47,14 @@ def agr_dato(fecha,proveedor,descripcion):#crea una compra con los datos ingresa
     con.commit()
     id_compra=resultado.fetchone()
     print(id_compra[0])
-    query2="""UPDATE compra SET numero_factura=?"""
-    c.execute(query2,[id_compra[0]])
+    query2="""UPDATE compra SET numero_factura=? WHERE id_compra=?"""
+    
+    c.execute(query2,[id_compra[0],id_compra[0]])
     con.commit()
     con.close()
     return id_compra[0]
 
 def get_prod_compra(id_compra,id_produc):
-     """
-    Funcion para obetenr los un producto y su respectiva compra
-    """
     con = connect()
     c = con.cursor()
     query = """SELECT a.codigo,a.nombre,a.marca,b.cantidad,b.precio_unitario,b.total FROM productos a,compra_has_producto b WHERE b.fk_id_compra=? AND a.id_producto=b.fk_id_producto"""
@@ -70,9 +64,6 @@ def get_prod_compra(id_compra,id_produc):
     con.close()
     return prod
 def get_id_compra():
-    """
-    Funcion para obtener una compra a traves de un id
-    """
     con = connect()
     c = con.cursor()
     query = """SELECT b.fk_id_compra,b.total FROM productos a,compra_has_producto b WHERE a.id_producto=b.fk_id_producto """
@@ -81,9 +72,6 @@ def get_id_compra():
     con.close()
     return prod
 def get_productos():
-     """
-    Funcion para obtener un producto
-    """
     con = connect()
     c = con.cursor()
     query = """SELECT codigo,nombre,descripcion,marca,color FROM productos"""
@@ -92,9 +80,6 @@ def get_productos():
     con.close()
     return prod
 def get_compra():
-     """
-    Funcion para obtener una compra
-    """
     con = connect()
     c = con.cursor()
     query = """SELECT id_compra,fecha,proveedor,numero_factura,descripcion FROM compra """
@@ -103,9 +88,6 @@ def get_compra():
     con.close()
     return prod
 def cambiar_precios(key,cantidad,precio,descuento):
-    """
-    Funcion para cambiar el precio de un producto comprado
-    """
     con = connect()
     c = con.cursor()
     pre=precio*(descuento/100)
@@ -116,9 +98,6 @@ def cambiar_precios(key,cantidad,precio,descuento):
     con.close()
     return prod
 def get_compra_unitaria(codigo):
-    """
-    Funcion para obtener una compra
-    """
     con = connect()
     c = con.cursor()
     query = """SELECT a.nombre, a.marca, b.precio_unitario,b.cantidad, b.total, b.fk_id_producto FROM productos a,compra_has_producto b WHERE b.fk_id_producto=a.id_producto AND b.fk_id_compra=? """
@@ -145,9 +124,6 @@ def editar_compra(precio,cantidad,total,codigo,id_compra):
     return exito
 #actualiza la base de dato con respecto a los datos ingresado
 def editar_producto(codigo,nombre,descripcion,marca,color):
-    """
-    Actualiza la base de dato con respecto a los datos ingresado
-    """
     exito = False
     con = connect()
     c = con.cursor()
@@ -166,9 +142,6 @@ def editar_producto(codigo,nombre,descripcion,marca,color):
     return exito
 #elimina una fila  de la base de datos de la tabla productos con respecto a el primary key
 def delete(dato):
-     """
-    Elimina una fila  de la base de datos de la tabla productos con respecto a el primary key
-    """
     exito = False
     con = connect()
     c = con.cursor()
@@ -206,15 +179,16 @@ def cancelar_compra(id_compra):
     con.close()
     
 def borrar_compra(dato):
-    """
-    Funcion para borrar una compra realizada
-    """
     exito = False
     con = connect()
     c = con.cursor()
-    query = "DELETE FROM compra WHERE numero_factura = ?"
+    id_compra=resultado.fetchone()	
+    query2 = "DELETE FROM compra WHERE id_compra= ?"
+    c.execute(query2, [dato])
+    con.commit()
+    query = "DELETE FROM compra_has_producto WHERE fk_id_compra = ?"
     try:
-        resultado = c.execute(query, [dato])
+        c.execute(query, [dato])
         con.commit()
         exito = True
     except sqlite3.Error as e:
@@ -224,9 +198,6 @@ def borrar_compra(dato):
     return exito
 #inserta una fila en la base de datos con los datos ingresados
 def agregar_producto(codigo,nombre,descripcion,marca,color):
-     """
-    inserta una fila en la base de datos con los datos ingresados
-    """
     exito = False
     con = connect()
     c = con.cursor()
@@ -243,9 +214,6 @@ def agregar_producto(codigo,nombre,descripcion,marca,color):
     return exito
 
 def buscar_compra(word_c,word_p):
-    """
-    Funcion para filtrar compras en la grilla 
-    """
     con = connect()
     c = con.cursor()
     query = """SELECT a.fecha, a.proveedor, a.numero_factura, a.descripcion
@@ -257,9 +225,6 @@ def buscar_compra(word_c,word_p):
     con.close()
     return seleccion
 def buscar_compra_realizada(word):
-     """
-    Funcion para filtrar los productos en la grilla
-    """
     con = connect()
     c = con.cursor()
     query = """SELECT a.nombre, a.marca, b.precio_unitario, b.cantidad, b.total

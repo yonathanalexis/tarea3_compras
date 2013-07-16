@@ -47,8 +47,9 @@ def agr_dato(fecha,proveedor,descripcion):#crea una compra con los datos ingresa
     con.commit()
     id_compra=resultado.fetchone()
     print(id_compra[0])
-    query2="""UPDATE compra SET numero_factura=?"""
-    c.execute(query2,[id_compra[0]])
+    query2="""UPDATE compra SET numero_factura=? WHERE id_compra=?"""
+    
+    c.execute(query2,[id_compra[0],id_compra[0]])
     con.commit()
     con.close()
     return id_compra[0]
@@ -181,9 +182,13 @@ def borrar_compra(dato):
     exito = False
     con = connect()
     c = con.cursor()
-    query = "DELETE FROM compra WHERE numero_factura = ?"
+    	
+    query2 = "DELETE FROM compra WHERE id_compra= ?"
+    c.execute(query2, [dato])
+    con.commit()
+    query = "DELETE FROM compra_has_producto WHERE fk_id_compra = ?"
     try:
-        resultado = c.execute(query, [dato])
+        c.execute(query, [dato])
         con.commit()
         exito = True
     except sqlite3.Error as e:
