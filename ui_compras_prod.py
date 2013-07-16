@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_compras_prod.ui'
 #
-# Created: Mon Jul 15 01:30:19 2013
+# Created: Mon Jul 15 17:15:26 2013
 #      by: pyside-uic 0.2.14 running on PySide 1.1.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -56,6 +56,9 @@ class Ui_Form(object):
         self.line_total.setEnabled(False)
         self.line_total.setGeometry(QtCore.QRect(590, 580, 171, 27))
         self.line_total.setObjectName("line_total")
+        self.cancelar_compra = QtGui.QPushButton(Form)
+        self.cancelar_compra.setGeometry(QtCore.QRect(160, 570, 141, 41))
+        self.cancelar_compra.setObjectName("cancelar_compra")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -68,19 +71,10 @@ class Ui_Form(object):
         self.eliminar_prod.setText(QtGui.QApplication.translate("Form", "Eliminar", None, QtGui.QApplication.UnicodeUTF8))
         self.editar_prod.setText(QtGui.QApplication.translate("Form", "Editar", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("Form", "Total Compra:", None, QtGui.QApplication.UnicodeUTF8))
-        self.fin.setText(QtGui.QApplication.translate("Form", "Finalizar Compra", None, QtGui.QApplication.UnicodeUTF8))
+        self.fin.setText(QtGui.QApplication.translate("Form", "Guardar Compra", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("Form", "Descuento:", None, QtGui.QApplication.UnicodeUTF8))
         self.line_descuento.setPlaceholderText(QtGui.QApplication.translate("Form", "Descuento", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("Form", "%", None, QtGui.QApplication.UnicodeUTF8))
         self.line_total.setPlaceholderText(QtGui.QApplication.translate("Form", "Total de la compra", None, QtGui.QApplication.UnicodeUTF8))
-        
-        self.buscar_prod_2.setIcon(QtGui.QIcon("buscar_compra.ico"))
-        self.agregar_prod.setIcon(QtGui.QIcon("agregar_compra.ico"))
-        self.agregar_prod.setIconSize(QtCore.QSize(45,45))
-        self.eliminar_prod.setIcon(QtGui.QIcon("eliminar_compra.ico"))
-        self.eliminar_prod.setIconSize(QtCore.QSize(30,30))
-        self.editar_prod.setIcon(QtGui.QIcon("editar_compra.ico"))
-        self.editar_prod.setIconSize(QtCore.QSize(30,30))
-        self.fin.setIcon(QtGui.QIcon("finalizar_compra.ico"))
-        self.fin.setIconSize(QtCore.QSize(25,25))
+        self.cancelar_compra.setText(QtGui.QApplication.translate("Form", "Cancelar Compra", None, QtGui.QApplication.UnicodeUTF8))
 

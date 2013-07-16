@@ -127,7 +127,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Finalizar Compra</string>
+    <string>Guardar Compra</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
@@ -189,6 +189,19 @@
    </property>
    <property name="placeholderText">
     <string>Total de la compra</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="cancelar_compra">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>570</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cancelar Compra</string>
    </property>
   </widget>
  </widget>
